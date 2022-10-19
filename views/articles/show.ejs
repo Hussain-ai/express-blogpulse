@@ -1,11 +1,18 @@
 <h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
-
 <p>
   <strong><%= moment(article.createdAt).calendar() %></strong>
 </p>
-
 <p><%= article.content %></p>
-
+<!-- show comment for article -->
+<% if (article.comments.length > 0) { %>
+  <h3>Comments</h3>
+  <ul>
+    <% article.comments.forEach(function(comment) { %>
+      <li>
+        <strong><%= comment.author.getFullName() %></strong>
+        <p><%= comment.content %></p>
+      </li>
+    <% }) %>
+  </ul>
 <hr />
-
 <a href="/">&larr; Back Home</a>
